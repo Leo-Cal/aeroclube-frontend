@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import './index.css';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
-import { withStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 //import { Button } from 'react-native'
 import axios from 'axios'
@@ -73,7 +74,10 @@ class Obter_Alunos extends React.Component {
     <Button
     onClick = {()=> this.handleClick()}
     >
-    Obter Alunos
+    <Icon>
+    account_box
+    </Icon>
+    <p>Obter Alunos</p>
     </Button>
      );
   }
@@ -130,7 +134,7 @@ class Criar_Aluno extends React.Component {
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
   },
   input: {
     margin: theme.spacing.unit,
@@ -197,10 +201,13 @@ constructor(props) {
 renderButtons() {
   return (
     <>
-    <Obter_Alunos />
-    <Criar_Aluno />
-    <Obter_Instrutores />
-    <Criar_Instrutor />
+    <div class = 'menu'>
+      <Obter_Alunos />
+      <Criar_Aluno />
+      <Obter_Instrutores />
+      <Criar_Instrutor />
+    </div>
+    
 
     </>
   );
