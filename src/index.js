@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'
 import './index.css';
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
 //import { Button } from 'react-native'
+import axios from 'axios'
+
 
 const url_alunos = 'https://aeroclub-backend.herokuapp.com/api/Alunos'
-const url_instrutor = 'https://aeroclub-backend.herokuapp.com/api/Intrutores'
+const url_instrutor = 'https://aeroclub-backend.herokuapp.com/api/Instrutores'
 
-class Obter_Instrutor extends React.Component {
+class Obter_Instrutores extends React.Component {
 
   constructor(props){
     super(props)
@@ -15,23 +21,33 @@ class Obter_Instrutor extends React.Component {
   }
 
   handleClick(){
-    //axios.get()
-  }
+    console.log("click");
+      axios.get(url_instrutor)
+        .then(result => {
+          console.log("Instrutores",result);
+          const instrutores = result.data.data
+            .map((item => {
+                return item.nome;
+            }))
+
+            return instrutores;
+        })
+      }
 
   render(){
     return(
-    <button
+    <Button
     //Cadastrar Instrutor
-    onClick = {()=> this.handleClick}
+    onClick = {()=> this.handleClick()}
     >
-    Obter Instrutor
-    </button>
+    Obter Instrutores
+    </Button>
      );
   }
 }
 
 
-class Obter_Aluno extends React.Component {
+class Obter_Alunos extends React.Component {
 
   constructor(props){
     super(props)
@@ -39,17 +55,26 @@ class Obter_Aluno extends React.Component {
   }
 
   handleClick(){
-//    axios.get(url_alunos)
+    console.log("click");
+    axios.get(url_alunos)
+      .then(result => {
+        console.log("Alunos",result);
+        const alunos = result.data.data
+          .map((item => {
+              return item.nome
+          }))
+
+          return alunos
+      })
   }
 
   render(){
     return(
-    <button
-    //Cadastrar Instrutor
-    onClick = {()=> this.handleClick}
+    <Button
+    onClick = {()=> this.handleClick()}
     >
-    Obter Aluno
-    </button>
+    Obter Alunos
+    </Button>
      );
   }
 }
@@ -63,17 +88,16 @@ class Criar_Instrutor extends React.Component {
   }
 
   handleClick(){
-    //axios.get()
+    //axios.post()
   }
 
   render(){
     return(
-    <button
-    //Cadastrar Instrutor
+    <Button
     onClick = {()=> this.handleClick}
     >
     Criar Instrutor
-    </button>
+    </Button>
      );
   }
 }
@@ -87,22 +111,79 @@ class Criar_Aluno extends React.Component {
   }
 
   handleClick(){
-    //axios.get()
+    //axios.post()
   }
 
   render(){
     return(
-    <button
-    //Cadastrar Instrutor
-    onClick = {()=> this.handleClick}
+    <Button
+    onClick = {()=> this.handleClick()}
     >
     Criar Aluno
-    </button>
+    </Button>
      );
   }
 }
 
 
+
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  input: {
+    margin: theme.spacing.unit,
+  },
+});
+
+// function Inputs(props) {
+//   const { classes } = props;
+//   return (
+//     <div className={classes.container}>
+//       <Input
+//         defaultValue="Hello world"
+//         className={classes.input}
+//         inputProps={{
+//           'aria-label': 'Description',
+//         }}
+//       />
+//
+//       <Input
+//         placeholder="Placeholder"
+//         className={classes.input}
+//         inputProps={{
+//           'aria-label': 'Description',
+//         }}
+//       />
+//
+//       <Input
+//         value="Disabled"
+//         className={classes.input}
+//         disabled
+//         inputProps={{
+//           'aria-label': 'Description',
+//         }}
+//       />
+//
+//       <Input
+//         defaultValue="Error"
+//         className={classes.input}
+//         error
+//         inputProps={{
+//           'aria-label': 'Description',
+//         }}
+//       />
+//     </div>
+//   );
+// }
+//
+// Inputs.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
+//
+// export default withStyles(styles)(Inputs);
+//
 
 
 
@@ -113,21 +194,21 @@ constructor(props) {
   super(props)
 }
 
-renderBotaoAluno() {
+renderButtons() {
   return (
-    <Obter_Aluno />
+    <>
+    <Obter_Alunos />
+    <Criar_Aluno />
+    <Obter_Instrutores />
+    <Criar_Instrutor />
+
+    </>
   );
 }
 
-renderBotao_Instrutor() {
-  return(
-    <Obter_Instrutor />
-  )
-}
 render(){
   return(
-   //this.renderBotaoAluno()
-   this.renderBotao_Instrutor()
+   this.renderButtons()
   );
 
 }
