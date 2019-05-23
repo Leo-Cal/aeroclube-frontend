@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+//import axios from 'axios';
+
 //import { Button } from 'react-native'
 
+const url_alunos = 'https://aeroclub-backend.herokuapp.com/api/Alunos'
+const url_instrutor = 'https://aeroclub-backend.herokuapp.com/api/Intrutores'
 
-class Botao_Instrutor extends React.Component {
+class Obter_Instrutor extends React.Component {
 
   constructor(props){
     super(props)
@@ -12,7 +16,7 @@ class Botao_Instrutor extends React.Component {
   }
 
   handleClick(){
-
+    //axios.get()
   }
 
   render(){
@@ -21,14 +25,14 @@ class Botao_Instrutor extends React.Component {
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
-    Cadastrar Instrutor
+    Obter Instrutor
     </button>
      );
   }
 }
 
 
-class Botao_Aluno extends React.Component {
+class Obter_Aluno extends React.Component {
 
   constructor(props){
     super(props)
@@ -36,7 +40,7 @@ class Botao_Aluno extends React.Component {
   }
 
   handleClick(){
-
+//    axios.get(url_alunos)
   }
 
   render(){
@@ -45,11 +49,63 @@ class Botao_Aluno extends React.Component {
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
-    Cadastrar Aluno
+    Obter Aluno
     </button>
      );
   }
 }
+
+
+class Criar_Instrutor extends React.Component {
+
+  constructor(props){
+    super(props)
+
+  }
+
+  handleClick(){
+    //axios.get()
+  }
+
+  render(){
+    return(
+    <button
+    //Cadastrar Instrutor
+    onClick = {()=> this.handleClick}
+    >
+    Criar Instrutor
+    </button>
+     );
+  }
+}
+
+
+class Criar_Aluno extends React.Component {
+
+  constructor(props){
+    super(props)
+
+  }
+
+  handleClick(){
+    //axios.get()
+  }
+
+  render(){
+    return(
+    <button
+    //Cadastrar Instrutor
+    onClick = {()=> this.handleClick}
+    >
+    Criar Aluno
+    </button>
+     );
+  }
+}
+
+
+
+
 
 class Tela extends React.Component{
 
@@ -60,13 +116,13 @@ constructor(props) {
 
 renderBotaoAluno() {
   return (
-    <Botao_Aluno />
+    <Obter_Aluno />
   );
 }
 
 renderBotao_Instrutor() {
   return(
-    <Botao_Instrutor />
+    <Obter_Instrutor />
   )
 }
 render(){
