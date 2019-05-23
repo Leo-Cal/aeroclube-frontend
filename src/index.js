@@ -20,12 +20,12 @@ class Obter_Instrutor extends React.Component {
 
   render(){
     return(
-    <button
+    <Button
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
     Obter Instrutor
-    </button>
+    </Button>
      );
   }
 }
@@ -44,12 +44,12 @@ class Obter_Aluno extends React.Component {
 
   render(){
     return(
-    <button
+    <Button
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
     Obter Aluno
-    </button>
+    </Button>
      );
   }
 }
@@ -68,12 +68,12 @@ class Criar_Instrutor extends React.Component {
 
   render(){
     return(
-    <button
+    <Button
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
     Criar Instrutor
-    </button>
+    </Button>
      );
   }
 }
@@ -92,12 +92,12 @@ class Criar_Aluno extends React.Component {
 
   render(){
     return(
-    <button
+    <Button
     //Cadastrar Instrutor
     onClick = {()=> this.handleClick}
     >
     Criar Aluno
-    </button>
+    </Button>
      );
   }
 }
