@@ -1,12 +1,86 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import { Button } from 'react-native'
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class Botao_Instrutor extends React.Component {
+
+  constructor(props){
+    super(props)
+
+  }
+
+  handleClick(){
+
+  }
+
+  render(){
+    return(
+    <button
+    //Cadastrar Instrutor
+    onClick = {()=> this.handleClick}
+    >
+    Cadastrar Instrutor
+    </button>
+     );
+  }
+}
+
+
+class Botao_Aluno extends React.Component {
+
+  constructor(props){
+    super(props)
+
+  }
+
+  handleClick(){
+
+  }
+
+  render(){
+    return(
+    <button
+    //Cadastrar Instrutor
+    onClick = {()=> this.handleClick}
+    >
+    Cadastrar Aluno
+    </button>
+     );
+  }
+}
+
+class Tela extends React.Component{
+
+
+constructor(props) {
+  super(props)
+}
+
+renderBotaoAluno() {
+  return (
+    <Botao_Aluno />
+  );
+}
+
+renderBotao_Instrutor() {
+  return(
+    <Botao_Instrutor />
+  )
+}
+render(){
+  return(
+   //this.renderBotaoAluno()
+   this.renderBotao_Instrutor()
+  );
+
+}
+
+}
+
+
+ReactDOM.render(
+  <Tela />,
+  document.getElementById('root')
+)
