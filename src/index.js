@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTable from 'react'
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types'
 import './index.css';
@@ -125,7 +126,25 @@ class Criar_Aluno extends React.Component {
   }
 }
 
+class Registrar_Voo extends React.Component {
 
+
+  RegistrarVoo(){
+    //axos.post()
+  }
+
+
+  render(){
+    return(
+      <Button
+      onClick = {()=>this.RegistrarVoo()}
+      >
+      Registrar Voo
+      </Button>
+    );
+  }
+
+}
 
 const styles = theme => ({
   container: {
@@ -136,6 +155,8 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
 });
+
+
 
 // function Inputs(props) {
 //   const { classes } = props;
@@ -185,6 +206,53 @@ const styles = theme => ({
 // export default withStyles(styles)(Inputs);
 //
 
+class TableAlunos extends React.Component {
+
+  constructor () {
+    super();
+    this.state = {
+      tableData: [{
+        nome: '',
+        cpf: '',
+        dataNascimento: '',
+        email: '',
+        numeroMatricula: '',
+      }],
+    };
+  }
+  componentMount() {
+    axios.get(url_alunos, {responseType: 'json'
+  }).then(response => {
+    this.setState({ tableData : response.data});
+  });
+
+  }
+
+  render() {
+    const {tableData} = this.state;
+
+    return ( <ReactTable.default
+                    data = {tableData}
+                    columns = {[
+                      {
+                          Header : 'Alunos',
+                          nome : 'nome',
+                          cfp : 'cpf',
+                          dataNascimento : 'dataNascimento',
+                          email : 'email',
+                          numeroMatricula : 'numeroMatricula'
+
+                      },
+                    ]}
+                    defaultPageSize = {10}
+                    className = "-striped -highlight"
+                    />
+            );
+  }
+
+
+};
+
 
 
 class Tela extends React.Component{
@@ -201,6 +269,7 @@ renderButtons() {
     <Criar_Aluno />
     <Obter_Instrutores />
     <Criar_Instrutor />
+    <Registrar_Voo />
 
     </>
   );
